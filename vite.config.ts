@@ -17,7 +17,12 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: ['jest.setup.js'],
 		coverage: {
-			include: ['src/**/*.{ts,tsx}']
-		}
+			include: ['src/**/*.{ts,tsx}'],
+			branches: 90,
+			statements: 90,
+			functions: 90,
+			lines: 90
+		},
+		
   },
 })
