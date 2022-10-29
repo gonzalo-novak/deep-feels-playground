@@ -5,7 +5,7 @@ end_of_line = lf
 insert_final_newline = true
 charset = utf-8
 
-[*.{tsx,css,ts}]
+[*.{tsx,css,ts,erb,ru}]
 indent_style = tab
 tab_width = 2
 
