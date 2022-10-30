@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "test": "vitest run --coverage",
+    "test:watch": "vitest --coverage",
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview"
