@@ -1,10 +1,13 @@
-import React from 'react'
+import React from 'react';
 import ReactDOM from 'react-dom/client'
-import { RouterProvider } from 'react-router-dom'
-import { router } from './routes'
+import { DeepFeelsApp } from './DeepFeelsApp';
+import { BrowserRouter } from 'react-router-dom';
+
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
 	<React.StrictMode>
-		<RouterProvider router={router} />
+		<BrowserRouter>
+			<DeepFeelsApp/>
+		</BrowserRouter>
 	</React.StrictMode>
 )
