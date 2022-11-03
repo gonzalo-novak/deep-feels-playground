@@ -2,7 +2,7 @@ name: Node.js Testing Check CI
 
 on:
   pull_request:
-    branches: [ main ]
+    branches: [ main, strict ]
 
 jobs:
   check:
