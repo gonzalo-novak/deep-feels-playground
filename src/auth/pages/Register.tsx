@@ -16,7 +16,7 @@ export const Register = () => {
 			<h1>Register</h1>
 			<br />
 
-			<button onClick={ handleLoginPage }>Inicia Sesión</button>
+			<button id="login" onClick={ handleLoginPage }>Inicia Sesión</button>
 		</>
 	)
 }

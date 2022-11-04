@@ -16,7 +16,7 @@ export const Login = () => {
 			<h1>Login</h1>
 			<br />
 
-			<button onClick={ handleRegisterPage }>Regístrate</button>
+			<button id="register" onClick={ handleRegisterPage }>Regístrate</button>
 		</>
 	)
 }
