@@ -1,13 +1,11 @@
 import { createBrowserRouter } from 'react-router-dom';
-import { About } from './pages/About';
-import { Home } from './pages/Home';
-import { Users } from './pages/Users';
+import { Login, Register, Home} from './pages/index';
 import { Layout } from './components/Layout';
 
 export const ROUTES = {
 	HOME: '/',
-	ABOUT: 'about',
-	USERS: 'users',
+	LOGIN: 'login',
+	REGISTER: 'register',
 }
 
 export const routes = [
@@ -17,12 +15,12 @@ export const routes = [
 		children: [
 			{ index: true, element: <Home /> },
 			{
-				path: ROUTES.ABOUT,
-				element: <About />
+				path: ROUTES.LOGIN,
+				element: <Login />
 			},
 			{
-				path: ROUTES.USERS,
-				element: <Users />
+				path: ROUTES.REGISTER,
+				element: <Register />
 			},
 		]
 	},
