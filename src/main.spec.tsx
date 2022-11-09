@@ -16,8 +16,6 @@ describe('Component: Router', () => {
 		);
 		render(<RouterProvider router={router} />);
 
-		screen.debug();
-
 		const homeTitleEl = await screen.findByRole("heading", { name: /Home/i });
 		expect(homeTitleEl).toBeInTheDocument();
 
