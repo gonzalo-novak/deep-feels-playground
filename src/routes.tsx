@@ -1,6 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom';
-import { Login, Register, Home} from './pages/';
-import { Layout } from './components/Layout';
+import { Login, Register} from './pages/';
 
 export const ROUTES = {
 	HOME: '/',
@@ -11,18 +10,15 @@ export const ROUTES = {
 export const routes = [
 	{
 		path: ROUTES.HOME,
-		element: <Layout />,
-		children: [
-			{ index: true, element: <Home /> },
-			{
-				path: ROUTES.LOGIN,
-				element: <Login />
-			},
-			{
-				path: ROUTES.REGISTER,
-				element: <Register />
-			},
-		]
+		element: <Login />,
+	},
+	{
+		path: ROUTES.LOGIN,
+		element: <Login />,
+	},
+	{
+		path: ROUTES.REGISTER,
+		element: <Register />,
 	},
 ];
 

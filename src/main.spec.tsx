@@ -16,16 +16,18 @@ describe('Component: Router', () => {
 		);
 		render(<RouterProvider router={router} />);
 
-		const homeTitleEl = await screen.findByRole("heading", { name: /Home/i });
+		const homeTitleEl = await screen.findByRole('heading', { name: /Login/i });
 		expect(homeTitleEl).toBeInTheDocument();
 
-		const goToAboutUsPageEl = await screen.findByRole('link', { name: /Login/i });
-		expect(goToAboutUsPageEl).toBeInTheDocument();
-		await user.click(goToAboutUsPageEl);
-		
-		const goToUsersPageEl = await screen.findByRole('link', { name: /Register/i });
-		expect(goToUsersPageEl).toBeInTheDocument();
-		await user.click(goToUsersPageEl);
-		
+		const registerBtn = await screen.findByRole('button', { name: /Regístrate/i });
+		expect(registerBtn).toBeInTheDocument();
+		await user.click(registerBtn);
+
+		const registerTitleEl = await screen.findByRole('heading', { name: /Register/i });
+		expect(registerTitleEl).toBeInTheDocument();
+
+		const loginBtn = await screen.findByRole('button', { name: /Inicia Sesión/i });
+		expect(loginBtn).toBeInTheDocument();
+		await user.click(loginBtn);
 	});
 });
