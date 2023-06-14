@@ -21,7 +21,7 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: ['jest.setup.js'],
 		coverage: {
-			provider: 'istanbul',
+			provider: 'v8',
 			include: [
 				'src/**/*.{ts,tsx}', 
 
