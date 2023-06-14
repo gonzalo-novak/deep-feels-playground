@@ -1,0 +1,26 @@
+version: '3'
+services:
+  web :
+    build:
+      context: ./
+      dockerfile: ./dockerfile.dev
+    container_name: vite_docker
+    image: node:18.16.0
+    volumes:
+     - /web/node_modules
+     - ./:/web
+    ports:
+      - 3090:3090
+    depends_on:
+      - db
+    environment:
+      - MONGO_URL=mongodb://db:27017/deepfeels
+    tty: true
+  db:
+    image: mongo:6.0.6
+    volumes:
+      - mongodb:/data/db
+    ports:
+      - 27017:27017
+volumes:
+ mongodb:

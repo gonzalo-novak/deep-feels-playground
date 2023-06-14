@@ -1,0 +1,8 @@
+node_modules
+.github
+.editorconfig
+.gitignore
+.gitattributes
+.git
+*Dockerfile*
+*docker-compose*
