@@ -12,11 +12,16 @@ export default defineConfig({
       localsConvention: 'camelCaseOnly',
     }
   },
+	server: {
+		host: true,
+		port: 3090,
+	},
   test: {
     globals: true,
     environment: 'jsdom',
     setupFiles: ['jest.setup.js'],
 		coverage: {
+			provider: 'istanbul',
 			include: [
 				'src/**/*.{ts,tsx}', 
 
