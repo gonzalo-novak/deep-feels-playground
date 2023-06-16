@@ -5,7 +5,7 @@ services:
       context: ./
       dockerfile: ./dockerfile.dev
     container_name: vite_docker
-    image: node:18.16.0
+    image: deep-feels-dev:latest
     volumes:
      - /web/node_modules
      - ./:/web
