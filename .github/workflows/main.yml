@@ -29,4 +29,15 @@ jobs:
           docker-compose -f ./docker.compose.prd.yml build
           docker tag deep-feels-prd:latest ${{ secrets.DOCKERHUB_USERNAME }}/deep-feels-prd:${{github.sha}}
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/deep-feels-prd:${{github.sha}}
+      -
+        name: Deploy image to PRD
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.PRD_HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          script: |
+            docker rm $(docker ps -aq)
+            docker pull ${{ secrets.DOCKERHUB_USERNAME }}/deep-feels-prd:${{github.sha}}
+            docker run -d -p 80:${{ secrets.CONTAINER_PORT }} ${{ secrets.DOCKERHUB_USERNAME }}/deep-feels-prd:${{github.sha}}
           
