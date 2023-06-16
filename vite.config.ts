@@ -16,6 +16,9 @@ export default defineConfig({
 		host: true,
 		port: 3090,
 	},
+	preview: {
+		port: 3090
+	},
   test: {
     globals: true,
     environment: 'jsdom',
