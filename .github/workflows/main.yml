@@ -37,7 +37,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           script: |
-            docker rm $(docker ps -aq)
+            docker rm -f $(docker ps -aq)
             docker pull ${{ secrets.DOCKERHUB_USERNAME }}/deep-feels-prd:${{github.sha}}
             docker run -d -p 80:${{ secrets.CONTAINER_PORT }} ${{ secrets.DOCKERHUB_USERNAME }}/deep-feels-prd:${{github.sha}}
           
