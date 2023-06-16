@@ -12,4 +12,4 @@ jobs:
       uses: actions/checkout@v3
 
     - name: Run tests
-      run: docker-compose -f ./docker.compose.test.yml run test
+      run: docker-compose -f ./docker.compose.test.yml run ci_test

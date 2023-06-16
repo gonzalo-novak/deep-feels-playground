@@ -16,7 +16,7 @@ describe('Component: Router', () => {
 		);
 		render(<RouterProvider router={router} />);
 
-		const homeTitleEl = await screen.findByRole('heading', { name: /Login/i });
+		const homeTitleEl = await screen.findByRole('heading', { name: /Welcome to Docker \+ Vite/i });
 		expect(homeTitleEl).toBeInTheDocument();
 
 		const registerBtn = await screen.findByRole('button', { name: /Regístrate/i });

@@ -1,5 +1,14 @@
+version: '3'
 services:
- test:
+  test:
+      image: deep-feels-test:latest
+      build:
+        context: ./
+        dockerfile: ./dockerfile.test
+      volumes:
+      - /web/node_modules
+      - ./:/web
+  ci_test:
     image: deep-feels-test:latest
     build:
       context: ./
