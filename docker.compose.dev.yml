@@ -4,7 +4,7 @@ services:
     build:
       context: ./
       dockerfile: ./dockerfile.dev
-    container_name: vite_docker
+    container_name: dp-docker-dev
     image: deep-feels-dev:latest
     volumes:
      - /web/node_modules
