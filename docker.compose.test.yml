@@ -1,8 +1,6 @@
 services:
  test:
+    image: deep-feels-test:latest
     build:
       context: ./
       dockerfile: ./dockerfile.test
-    volumes: 
-    - /web/node_modules
-    - .:/web
