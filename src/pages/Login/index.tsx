@@ -13,7 +13,7 @@ export const Login = () => {
 
 	return (
 		<>
-			<h1>Login</h1>
+			<h1>Welcome to Docker + Vite</h1>
 			<hr/>
 
 			<button onClick={handleRegisterPage}>Regístrate</button>
