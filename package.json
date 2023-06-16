@@ -8,7 +8,9 @@
     "test:watch": "vitest --coverage",
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "docker:dev": "docker-compose -f ./docker.compose.dev.yml up",
+    "docker:test": "docker-compose -f ./docker.compose.test.yml run test"
   },
   "dependencies": {
     "cross-fetch": "^3.1.5",
