@@ -29,7 +29,7 @@ npm run docker:test
 
 You may want to run your tests on the fly while writing them. To do so, you can run the following command:
 ``` bash
-npm run test:watch
+npm run docker:test-watch
 ```
 
 Happy coding! :four_leaf_clover:
