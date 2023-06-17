@@ -8,8 +8,19 @@ services:
       volumes:
       - /web/node_modules
       - ./:/web
-  ci_test:
+      command: npm run test
+  test-watch:
+      image: deep-feels-test:latest
+      build:
+        context: ./
+        dockerfile: ./dockerfile.test
+      volumes:
+      - /web/node_modules
+      - ./:/web
+      command: npm run test:watch
+  ci-test:
     image: deep-feels-test:latest
     build:
       context: ./
       dockerfile: ./dockerfile.test
+    command: npm run test

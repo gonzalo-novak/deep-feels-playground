@@ -11,16 +11,4 @@ services:
      - ./:/web
     ports:
       - 3090:3090
-    depends_on:
-      - db
-    environment:
-      - MONGO_URL=mongodb://db:27017/deepfeels
     tty: true
-  db:
-    image: mongo:6.0.6
-    volumes:
-      - mongodb:/data/db
-    ports:
-      - 27017:27017
-volumes:
- mongodb:
