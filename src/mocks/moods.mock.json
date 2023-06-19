@@ -1,0 +1,31 @@
+{
+  "ok": true,
+  "data": {
+      "moods": [
+          {
+              "_id": "648e717765d39f6455717004",
+              "name": "Ansiedad",
+              "icon": "https://res.cloudinary.com/mrrobnav/image/upload/v1633456610/deepfeels/ansiedad_mm9w5x.svg",
+              "__v": 0
+          },
+          {
+              "_id": "648e717765d39f6455717005",
+              "name": "Depresión",
+              "icon": "https://res.cloudinary.com/mrrobnav/image/upload/v1633456610/deepfeels/depresion_jjme9g.svg",
+              "__v": 0
+          },
+          {
+              "_id": "648e717765d39f6455717006",
+              "name": "Insomnio",
+              "icon": "https://res.cloudinary.com/mrrobnav/image/upload/v1633456610/deepfeels/insomnio_laoziq.svg",
+              "__v": 0
+          },
+          {
+              "_id": "648e717765d39f6455717007",
+              "name": "Tristeza",
+              "icon": "https://res.cloudinary.com/mrrobnav/image/upload/v1633456610/deepfeels/tristeza_pa4oo4.svg",
+              "__v": 0
+          }
+      ]
+  }
+}
