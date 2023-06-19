@@ -13,7 +13,7 @@ export type TError = {
 	data: { message: string; };
 };
 
-const context = '/api';
+export const apiContext = '/api';
 
 export const useFetch = <A = {}>(endpoint: keyof typeof ENDPOINTS, atom: PrimitiveAtom<A>, options?: RequestInit | undefined) => {
 	const setAtom = useSetAtom(atom);
@@ -23,13 +23,20 @@ export const useFetch = <A = {}>(endpoint: keyof typeof ENDPOINTS, atom: Primiti
 	const getStuff = useCallback(async () => {
 		setLoading(true);
 		try {
-			const res = await fetch(context + ENDPOINTS[endpoint], options);
+			const res = await fetch(
+				// We'll omit this line as we don't need to test it because it's
+				// only used in testing environments
+				/* c8 ignore next */ 
+				(process.env.TEST_API_HOST || '') 
+				+ apiContext 
+				+ ENDPOINTS[endpoint], 
+				options
+			);
 			const { ok, data }: TResponse<A> = await res.json();
 			if(!ok) throw data;
 			setAtom(data);
 		} catch (error: any) {
-			if(error.message)
-			setError(error as TError);
+			if(error.message) setError(error as TError['data']);
 		} finally {
 			setLoading(false);
 		}

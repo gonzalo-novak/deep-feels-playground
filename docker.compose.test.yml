@@ -5,22 +5,30 @@ services:
       build:
         context: ./
         dockerfile: ./dockerfile.test
+      environment:
+        - TEST_API_HOST=http://dp-test:3090
       volumes:
-      - /web/node_modules
-      - ./:/web
+        - ./:/web
+        - /web/node_modules
       command: npm run test
+  
   test-watch:
       image: deep-feels-test:latest
       build:
         context: ./
         dockerfile: ./dockerfile.test
       volumes:
-      - /web/node_modules
-      - ./:/web
+        - ./:/web
+        - /web/node_modules
+      environment:
+        - TEST_API_HOST=http://dp-test:3090
       command: npm run test:watch
+  
   ci-test:
     image: deep-feels-test:latest
     build:
       context: ./
       dockerfile: ./dockerfile.test
+    environment:
+      - TEST_API_HOST=http://dp-test:3090
     command: npm run test
