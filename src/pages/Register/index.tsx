@@ -6,7 +6,7 @@ export const Register = () => {
 	const navigate = useNavigate();
 	
 	const handleLoginPage = () => {
-		navigate(`/${ROUTES.LOGIN}`, {
+		navigate(ROUTES.LOGIN, {
 			replace: true
 		})
 	}	
