@@ -15,9 +15,13 @@ export default defineConfig({
 	server: {
 		host: true,
 		port: 3090,
-	},
-	preview: {
-		port: 3090
+		proxy: {
+			'/api': {
+        target: `http://${process.env.API_HOST}:${process.env.API_PORT}`,
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+		}
 	},
   test: {
     globals: true,

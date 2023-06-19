@@ -12,3 +12,11 @@ services:
     ports:
       - 3090:3090
     tty: true
+    environment:
+      - API_HOST=${API_HOST}
+      - API_PORT=${API_PORT}
+    networks:
+      - deep-feels-api_default
+networks:
+  deep-feels-api_default:
+    external: true
