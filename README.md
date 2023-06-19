@@ -33,6 +33,3 @@ npm run docker:test-watch
 ```
 
 Happy coding! :four_leaf_clover:
-
-## Pst! Do you want to see what you develop online? 👀
-You can see the amazing work you've done by clicking on the following link: http://deepfeels.monstertrap.art/
