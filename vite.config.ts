@@ -12,6 +12,12 @@ export default defineConfig({
       localsConvention: 'camelCaseOnly',
     }
   },
+	define: {
+		// As we need to add a host in our testing environment to prevent issues with the fetch API, 
+		// we exposed an env variable on the node-js process. However, since we use a proxy in the browser, 
+		// we don't need it but we do need to persist its reference to avoid errors.
+    ...((process.env.NODE_ENV !== 'production') ? ({'process.env': process.env}) : ({'process': {}}))
+  },
 	server: {
 		host: true,
 		port: 3090,

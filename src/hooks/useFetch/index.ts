@@ -22,12 +22,13 @@ export const useFetch = <A = {}>(endpoint: keyof typeof ENDPOINTS, atom: Primiti
 
 	const getStuff = useCallback(async () => {
 		setLoading(true);
+		console.log(process.env)
 		try {
 			const res = await fetch(
 				// We'll omit this line as we don't need to test it because it's
 				// only used in testing environments
 				/* c8 ignore next */ 
-				(process.env.TEST_API_HOST || '') 
+				(process.env?.TEST_API_HOST || '') 
 				+ apiContext 
 				+ ENDPOINTS[endpoint], 
 				options
