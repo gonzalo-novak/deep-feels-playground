@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom';
-import { ROUTES } from '../../routes';
 import { useFetch } from '../../hooks/useFetch';
 import { atom, useAtomValue } from 'jotai';
 import { isFetchError } from '../../hooks/useFetch/atoms';
+import { ROUTES } from '../../utils/routes';
 
 const testMoodsAtom = atom<{_id: string; name: string;} | null>(null);
 
@@ -17,8 +17,6 @@ export const Login = () => {
 			replace: true
 		})
 	}
-
-	if(fetchError) return <h1>There was an error {fetchError.message}</h1>
 
 	return (
 		<>
