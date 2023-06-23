@@ -1,0 +1,13 @@
+{
+  "ok": true,
+  "data": {
+    "user": {
+      "_id": "ABCDE",
+      "photo": "",
+      "name": "A new user",
+      "email": "user@main.com",
+      "moods": []
+    },
+    "token": "ABCDE"
+  }
+}
