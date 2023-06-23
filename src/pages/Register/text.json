@@ -1,0 +1,30 @@
+{
+  "title": "Regístrate una sola vez. Explora varios mundos.",
+  "form": {
+    "name": {
+      "label": "¿Cuál es tu nombre?",
+      "placeholder": "Introduce tu nombre",
+      "validationMessages": {
+        "emptyValue": "El campo no debe permanecer vacío"
+      }
+    },
+    "password": {
+      "label": "Contraseña",
+      "placeholder": "Piensa en una frase favorita",
+      "validationMessages": {
+        "emptyValue": "El campo no debe permanecer vacío",
+        "badPasswordFormat": "La contraseña debe ser mayor a 10 caracteres y al menos tener una letra mayúscula"
+      }
+    },
+    "email": {
+      "label": "Email",
+      "placeholder": "Introduce tu email",
+      "validationMessages": {
+        "emptyValue": "El campo no debe permanecer vacío",
+        "badEmailFormat": "El email no tiene un formato correcto"
+      }
+    }
+  },
+  "main_cta": "Registrate",
+  "image_alt": "Mujer relajada meditando"
+}
