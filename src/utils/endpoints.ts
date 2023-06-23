@@ -1,3 +1,4 @@
 export const ENDPOINTS = {
-	moods: '/moods'
+	moods: '/moods',
+	register: '/user/register'
 };
