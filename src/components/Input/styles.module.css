@@ -1,0 +1,30 @@
+@value gray: #DDD;
+.label {
+	display: block;
+	font-size: 1rem;
+	font-weight: 600;
+}
+.input, .input-error {
+	display: block;
+	padding: 15px;
+	border-radius: 8px;
+	font-size: 1rem;
+	line-height: 1.3rem;
+	margin-top: .35rem;
+	outline: none;
+	width: 100%;
+}
+.input {
+	border: 1px solid gray;
+}
+.input:focus {
+	border: 1px solid var(--color-purple);
+}
+.input-error {
+	border: 1px solid var(--color-red);
+}
+.error-message {
+	color: var(--color-red);
+	filter: brightness(.65);
+	font-size: .9rem;
+}
