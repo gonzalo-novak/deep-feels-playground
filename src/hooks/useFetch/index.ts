@@ -1,7 +1,8 @@
-import { PrimitiveAtom, atom, useSetAtom } from "jotai";
+import { PrimitiveAtom, atom, useAtomValue, useSetAtom } from "jotai";
 import { useCallback, useEffect } from "react";
 import { ENDPOINTS } from "../../utils/endpoints";
 import { isFetchError, isLoading } from "./atoms";
+import { sessionAtomWithPersistence } from "../../states/session";
 
 export type TResponse<A> = {
 	ok: boolean,
@@ -13,7 +14,7 @@ export type TError = {
 	data: { message: string; };
 };
 
-type FetchOptions = Omit<RequestInit, 'body'> & { body: any } ;
+type FetchOptions = Omit<RequestInit, 'body'> & { body: any, useCredentials?: boolean; } ;
 
 export const apiContext = '/api';
 
@@ -28,6 +29,7 @@ export const useFetch = <A = {}>(
 	const setAtom = useSetAtom(isAtomDelegated ? dummyAtom : atom);
 	const setLoading = useSetAtom(isLoading);
 	const setError = useSetAtom(isFetchError);
+	const session = useAtomValue(sessionAtomWithPersistence);
 
 	const getStuff = useCallback(async () => {
 		setLoading(true);
@@ -43,7 +45,7 @@ export const useFetch = <A = {}>(
 					...options,
 					headers: {
 						'Content-Type': 'application/json',
-						...(options && options.headers && { headers: options.headers})
+						...(options && options.useCredentials && { Authorization: session })
 					},
 					...(options && options.body && { body: JSON.stringify(options.body) })
 				}
