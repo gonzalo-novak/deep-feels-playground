@@ -84,7 +84,7 @@ export const Login = () => {
 				</Button>
 
 				<span style={{ margin: '2rem auto', display: 'block', textAlign: 'center', fontSize: '.8rem' }}>
-					¿Aún no eres un usuario? <Link to={ROUTES.REGISTER}>Registrate aquí</Link>
+					¿Aún no eres un usuario? <Link to={ROUTES.REGISTER}>Regístrate aquí</Link>
 				</span>
 			</form>
 		</>
