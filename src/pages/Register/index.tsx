@@ -1,39 +1,35 @@
 import { text } from './text';
 import classNames from 'classnames';
-import styles from './styles.module.css';
-import globalStyles from '../../global.module.css';
-import { useAtom, useAtomValue, useSetAtom } from 'jotai';
-import { ROUTES } from '../../utils/routes';
 import { Text } from '../../components/Text';
-import { useNavigate } from 'react-router-dom';
 import { Input } from '../../components/Input';
 import { useFetch } from '../../hooks/useFetch';
+import { useAtomValue, useSetAtom } from 'jotai';
 import { Button } from '../../components/Button';
-import { sessionAtom } from '../../states/session';
+import globalStyles from '../../global.module.css';
 import { TUser, userAtom } from '../../states/user';
 import { validationStack } from '../../utils/formValidators';
+import { sessionAtomWithPersistence } from '../../states/session';
 import { FormEvent, useCallback, useEffect, useState } from 'react';
 import { isFetchError, isLoading } from '../../hooks/useFetch/atoms';
+import { Link } from 'react-router-dom';
+import { ROUTES } from '../../utils/routes';
 
 export const Register = () => {
-	// Initializers
-	const navigate = useNavigate();
-
 	// State
 	const [shouldStartRegistering, setShouldStartRegistering] = useState(false);
 	const [registerPayload, setRegisterPayload] = useState<TRegisterData>({ name: '', password: '', email: '' });
 
 	// Atoms
 	const setUser = useSetAtom(userAtom);
-	const [session, setSession] = useAtom(sessionAtom);
+	const setSession = useSetAtom(sessionAtomWithPersistence);
 	const isFetching = useAtomValue(isLoading);
 	const fetchError = useAtomValue(isFetchError);
 
 	// API Calls
-	useFetch<TUser & { token: string }>(
+	useFetch<{ token: string; user: TUser }>(
 		shouldStartRegistering ? 'register' : null,
-		({token, ...user}) => {
-			setUser({ ...user });
+		({token, user}) => {
+			setUser(user);
 			setSession(token);
 		},
 	{ method: 'POST', body: registerPayload });
@@ -64,12 +60,6 @@ export const Register = () => {
 	}
 
 	useEffect(() => {
-		if(session) {
-			navigate(ROUTES.LOGIN, { replace: true });
-		}
-	}, [session]);
-
-	useEffect(() => {
 		if(fetchError?.message) setShouldStartRegistering(false);
 	}, [fetchError?.message]);
 
@@ -80,7 +70,6 @@ export const Register = () => {
 			<form onSubmit={handleRegisterSubmit}>
 				<Input
 					name='name'
-					className={styles.inputMargins}
 					label={text.form.name.label}
 					placeholder={text.form.name.placeholder}
 					onChange={onInputChange}
@@ -88,7 +77,6 @@ export const Register = () => {
 				/>
 				<Input
 					name='email'
-					className={styles.inputMargins}
 					label={text.form.email.label}
 					placeholder={text.form.email.placeholder}
 					onChange={onInputChange}
@@ -96,7 +84,6 @@ export const Register = () => {
 				/>
 				<Input
 					autoComplete='new-password'
-					className={styles.inputMargins}
 					type='password'
 					name='password'
 					label={text.form.password.label}
@@ -106,7 +93,7 @@ export const Register = () => {
 				/>
 				<Button
 					type='submit'
-					style={{ display: 'inherit', margin: 'auto' }}
+					style={{ display: 'inherit', margin: 'auto', marginTop: '2rem' }}
 					disabled={
 						Object.values(registerPayload).some(v => !v)
 						|| isFetching
@@ -114,6 +101,9 @@ export const Register = () => {
 				>
 					{ (isFetching) ? 'Registrando...' : text.main_cta }
 				</Button>
+				<span style={{ margin: '2rem auto', display: 'block', textAlign: 'center', fontSize: '.8rem' }}>
+					¿Estás registrado? <Link to={ROUTES.LOGIN}>Inicia sesión</Link>
+				</span>
 			</form>
 		</div>
 	)
