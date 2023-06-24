@@ -1,4 +1,4 @@
-import text from './text.json';
+import { text } from './text';
 import { ROUTES } from "../../utils/routes";
 import { screen, fireEvent } from "@testing-library/react";
 import userEvent from '@testing-library/user-event';
