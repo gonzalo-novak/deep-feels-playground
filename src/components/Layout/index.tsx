@@ -1,13 +1,20 @@
 import 'react-toastify/dist/ReactToastify.min.css';
 import styles from './style.module.css';
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import { useEffect } from 'react';
-import { useAtom } from 'jotai';
+import { useAtom, useAtomValue } from 'jotai';
 import { isFetchError } from '../../hooks/useFetch/atoms';
+import { sessionAtomWithPersistence } from '../../states/session';
+import { userAtom } from '../../states/user';
+import { ROUTES } from '../../utils/routes';
 
 export const Layout = () => {
+	const navigate = useNavigate();
+	const { moods } = useAtomValue(userAtom);
 	const [fetchError, setFetchError] = useAtom(isFetchError);
+	const session = useAtomValue(sessionAtomWithPersistence);
+
 	useEffect(() => {
 		if(fetchError?.message){
 			const id = toast.error(fetchError.message, {
@@ -23,6 +30,18 @@ export const Layout = () => {
 			setFetchError(null);
 		}
 	}, [fetchError?.message]);
+
+	useEffect(() => {
+		if(session){
+			if(!moods.length)
+				navigate(ROUTES.MOODS);
+			else
+				navigate(ROUTES.PROFILE);
+		} else {
+			navigate(ROUTES.LOGIN);
+		}
+	}, [session, moods]);
+
  return (
  	<div className={styles.container}>
 		<Outlet></Outlet>
