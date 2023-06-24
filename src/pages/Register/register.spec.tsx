@@ -1,11 +1,12 @@
 import { text } from './text';
 import { ROUTES } from "../../utils/routes";
-import { screen, fireEvent } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import userEvent from '@testing-library/user-event';
 import { testWrapper } from "../../utils/test-wrapper";
 import { server } from '../../mocks/server';
 import { rest } from 'msw';
 import { generateURL } from '../../mocks/handlers';
+import { validationMessages } from '../../utils/formValidators';
 
 describe('Module: Register', () => {
 	const wrapper = async () => {
@@ -22,9 +23,9 @@ describe('Module: Register', () => {
 		await user.type(nameInputEl, 'Gonzalo');
 
 		await user.type(emailInputEl, 'gonzalo');
-		expect(await screen.findByText(text.form.email.validationMessages.badEmailFormat)).toBeInTheDocument();
+		expect(await screen.findByText(validationMessages.email)).toBeInTheDocument();
 		await user.type(emailInputEl, '@main.com');
-		expect(screen.queryByText(text.form.email.validationMessages.badEmailFormat)).toBeFalsy();
+		expect(screen.queryByText(validationMessages.email)).toBeFalsy();
 
 		let registerButton = await screen.findByRole('button', { name: text.main_cta });
 
