@@ -4,6 +4,7 @@
 	font-size: 1rem;
 	font-weight: 600;
 }
+
 .input, .input-error {
 	display: block;
 	padding: 15px;
@@ -11,6 +12,7 @@
 	font-size: 1rem;
 	line-height: 1.3rem;
 	margin-top: .35rem;
+	margin-bottom: 1rem;
 	outline: none;
 	width: 100%;
 }
