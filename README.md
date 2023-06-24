@@ -1,5 +1,5 @@
 ## Introduction
-This project has bootstrapped with [Vite (React + TS + CSS Modules)](https://vitejs.dev/guide/features.html), [Vitest (Testing library)](https://vitest.dev), [MSW](https://mswjs.io), [Jotai](https://jotai.org/) and [React router](https://reactrouter.com/en/main). :sparkles::purple_heart:
+This project has been bootstrapped with [Vite (React + TS + CSS Modules)](https://vitejs.dev/guide/features.html), [Vitest (Testing library)](https://vitest.dev), [MSW](https://mswjs.io), [Jotai](https://jotai.org/) and [React router](https://reactrouter.com/en/main). :sparkles::purple_heart:
 
 ## Prerequisites
 To run the project, you will need to install some extensions/tools before to do so:
