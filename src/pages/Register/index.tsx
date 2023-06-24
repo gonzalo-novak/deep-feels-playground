@@ -1,4 +1,4 @@
-import text from './text.json';
+import { text } from './text';
 import classNames from 'classnames';
 import styles from './styles.module.css';
 import globalStyles from '../../global.module.css';
@@ -40,20 +40,20 @@ export const Register = () => {
 
 	// Methods
 	const validateNameField = useCallback(
-		(value: string) => validationStack([[value, 'nonEmptyValue', text.form.password.validationMessages.emptyValue]]),
+		(value: string) => validationStack([[value, 'nonEmptyValue']]),
 	[]);
 
 	const validatePasswordField = useCallback(
 		(value: string) => validationStack([
-			[value, 'nonEmptyValue', text.form.password.validationMessages.emptyValue],
-			[value, 'password', text.form.password.validationMessages.badPasswordFormat]
+			[value, 'nonEmptyValue'],
+			[value, 'password']
 		]),
 	[]);
 
 	const validateEmailField = useCallback(
 		(value: string) => validationStack([
-			[value, 'nonEmptyValue', text.form.email.validationMessages.emptyValue],
-			[value, 'email', text.form.email.validationMessages.badEmailFormat]
+			[value, 'nonEmptyValue'],
+			[value, 'email']
 		]),
 	[]);
 
