@@ -1,5 +1,4 @@
 import { text } from './text';
-import { ROUTES } from "../../utils/routes";
 import { screen } from "@testing-library/react";
 import userEvent from '@testing-library/user-event';
 import { testWrapper } from "../../utils/test-wrapper";
@@ -9,9 +8,17 @@ import { generateURL } from '../../mocks/handlers';
 import { validationMessages } from '../../utils/formValidators';
 
 describe('Module: Register', () => {
+	beforeEach(() => {
+		localStorage.clear();
+	});
+
 	const wrapper = async () => {
 		const user = userEvent.setup();
-		testWrapper([ROUTES.REGISTER, ROUTES.LOGIN]);
+		testWrapper();
+
+		// Going to the register page
+		await user.click(await screen.findByText('Regístrate aquí'));
+
 		expect(await screen.findByText(text.title)).toBeInTheDocument();
 		expect(await screen.findByText(text.form.name.label)).toBeInTheDocument();
 
@@ -49,7 +56,6 @@ describe('Module: Register', () => {
 
 	it('Should register successfully', async () => {
 		await wrapper();
-		expect(await screen.findByText('Welcome to Docker + Vite')).toBeInTheDocument();
+		expect(await screen.findByRole('heading', { name: 'Hello world' })).toBeInTheDocument();
 	});
 });
-
