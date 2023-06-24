@@ -1,15 +1,12 @@
 import { useNavigate } from 'react-router-dom';
 import { useFetch } from '../../hooks/useFetch';
-import { atom, useAtomValue } from 'jotai';
-import { isFetchError } from '../../hooks/useFetch/atoms';
+import { useAtomValue } from 'jotai';
 import { ROUTES } from '../../utils/routes';
-
-const testMoodsAtom = atom<{_id: string; name: string;} | null>(null);
+import { moodsAtom } from '../../states/moods';
 
 export const Login = () => {
-	useFetch('moods', testMoodsAtom);
-	const moods = useAtomValue(testMoodsAtom);
-	const fetchError = useAtomValue(isFetchError);
+	useFetch('moods', moodsAtom);
+	const moods = useAtomValue(moodsAtom);
 	const navigate = useNavigate();
 
 	const handleRegisterPage = () => {
@@ -17,7 +14,6 @@ export const Login = () => {
 			replace: true
 		})
 	}
-
 	return (
 		<>
 			<h1>Welcome to Docker + Vite</h1>
