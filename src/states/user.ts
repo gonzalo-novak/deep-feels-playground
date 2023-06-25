@@ -7,12 +7,28 @@ export type TUser = {
 	name: string;
 	email: string;
 	moods: TMood[];
+	hasSelectedTheirMoods?: boolean;
 };
 
-export const userAtom = atom<TUser>({
-	_id: '',
-	photo: '',
-	name: '',
-	email: '',
-	moods: [],
-});
+export const userAtomRaw = atom<TUser>(
+	JSON.parse(
+		localStorage.getItem('user') ||
+		JSON.stringify(
+			{
+				_id: '',
+				photo: '',
+				name: '',
+				email: '',
+				moods: [],
+			}
+		)
+	) as TUser
+);
+
+export const userAtom = atom(
+  (get) => get(userAtomRaw),
+  (get, set, newStr: TUser) => {
+    set(userAtomRaw, newStr)
+    localStorage.setItem('user', JSON.stringify(newStr))
+  }
+)
