@@ -14,7 +14,7 @@ export type TError = {
 	data: { message: string; };
 };
 
-type FetchOptions = Omit<RequestInit, 'body'> & { body: any, useCredentials?: boolean; } ;
+type FetchOptions = Omit<RequestInit, 'body' | 'params'> & { body: any, useCredentials?: boolean; params?: { [k: string] : string | boolean | number } } ;
 
 export const apiContext = '/api';
 
@@ -40,7 +40,16 @@ export const useFetch = <A = {}>(
 				/* c8 ignore next */
 				(process.env?.TEST_API_HOST || '')
 				+ apiContext
-				+ ENDPOINTS[endpoint!],
+				+ (
+					(options && options.params)
+					? (
+							Object.entries(options!.params!).reduce((acc, [k, v]) => {
+								acc = ENDPOINTS[endpoint!].replace(k, String(v))
+								return acc
+							}, '')
+						)
+					: ENDPOINTS[endpoint!]
+				),
 				{
 					...options,
 					headers: {
@@ -59,7 +68,7 @@ export const useFetch = <A = {}>(
 		} finally {
 			setLoading(false);
 		}
-	}, [endpoint]);
+	}, [endpoint, options]);
 
 	useEffect(() => {
 		if(endpoint) getStuff();
