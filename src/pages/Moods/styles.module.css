@@ -1,0 +1,35 @@
+.no-mood-selected-button {
+	background-color: var(--color-yellow);
+	color: var(--color-black);
+}
+.no-mood-selected-button:hover:enabled {
+	background-color: var(--color-yellow);
+	filter: brightness(.9)
+}
+.moods-grid {
+	display: grid;
+	grid-template-areas: 'mood-card mood-card';
+	gap: 1rem;
+	justify-self: center;
+	margin: 4rem auto;
+}
+.moods-card {
+	background-color: var(--color-white);
+	border-radius: 8px;
+	padding: 1rem;
+	box-shadow: 0 9px 15px rgba(0, 0, 0, .1);
+	position: relative;
+}
+.mood-icon {
+	width: 7rem;
+	height: 7rem;
+	margin: auto;
+	margin-bottom: 1rem;
+	display: block;
+}
+.mood-check-icon {
+	position: absolute;
+	top: -14px;
+	right: -7px;
+	width: 2rem;
+}
