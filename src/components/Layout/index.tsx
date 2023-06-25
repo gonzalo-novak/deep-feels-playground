@@ -11,7 +11,7 @@ import { ROUTES } from '../../utils/routes';
 
 export const Layout = () => {
 	const navigate = useNavigate();
-	const { moods } = useAtomValue(userAtom);
+	const { hasSelectedTheirMoods } = useAtomValue(userAtom);
 	const [fetchError, setFetchError] = useAtom(isFetchError);
 	const session = useAtomValue(sessionAtomWithPersistence);
 
@@ -33,14 +33,14 @@ export const Layout = () => {
 
 	useEffect(() => {
 		if(session){
-			if(!moods.length)
+			if(!hasSelectedTheirMoods)
 				navigate(ROUTES.MOODS);
 			else
 				navigate(ROUTES.PROFILE);
 		} else {
 			navigate(ROUTES.LOGIN);
 		}
-	}, [session, moods]);
+	}, [session, hasSelectedTheirMoods]);
 
  return (
  	<div className={styles.container}>
