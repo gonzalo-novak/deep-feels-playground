@@ -56,6 +56,6 @@ describe('Module: Register', () => {
 
 	it('Should register successfully', async () => {
 		await wrapper();
-		expect(await screen.findByRole('heading', { name: 'Hello world' })).toBeInTheDocument();
+		expect(await screen.findByRole('heading', { name: '¿Tienes alguna de estas emociones?' })).toBeInTheDocument();
 	});
 });
