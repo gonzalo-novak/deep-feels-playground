@@ -1,8 +1,9 @@
-import { PrimitiveAtom, atom, useAtomValue, useSetAtom } from "jotai";
+import { useAtomValue, useSetAtom } from "jotai";
 import { useCallback, useEffect } from "react";
 import { ENDPOINTS } from "../../utils/endpoints";
 import { isFetchError, isLoading } from "./atoms";
 import { sessionAtomWithPersistence } from "../../states/session";
+import { generateURL } from "../../mocks/handlers";
 
 export type TResponse<A> = {
 	ok: boolean,
@@ -17,16 +18,11 @@ export type TError = {
 type FetchOptions = Omit<RequestInit, 'body' | 'params'> & { body: any, useCredentials?: boolean; params?: { [k: string] : string | boolean | number } } ;
 
 export const apiContext = '/api';
-
-const dummyAtom = atom(null);
-
 export const useFetch = <A = {}>(
 	endpoint: keyof typeof ENDPOINTS | null,
-	atom: PrimitiveAtom<A> | ((response: A) => void),
+	onFinishFetch: ((response: A) => void),
 	options?: FetchOptions | undefined
 ) => {
-	const isAtomDelegated = (typeof atom === 'function');
-	const setAtom = useSetAtom(isAtomDelegated ? dummyAtom : atom);
 	const setLoading = useSetAtom(isLoading);
 	const setError = useSetAtom(isFetchError);
 	const session = useAtomValue(sessionAtomWithPersistence);
@@ -35,21 +31,7 @@ export const useFetch = <A = {}>(
 		setLoading(true);
 		try {
 			const res = await fetch(
-				// We'll omit this line as we don't need to test it because it's
-				// only used in testing environments
-				/* c8 ignore next */
-				(process.env?.TEST_API_HOST || '')
-				+ apiContext
-				+ (
-					(options && options.params)
-					? (
-							Object.entries(options!.params!).reduce((acc, [k, v]) => {
-								acc = ENDPOINTS[endpoint!].replace(k, String(v))
-								return acc
-							}, '')
-						)
-					: ENDPOINTS[endpoint!]
-				),
+				generateURL(endpoint!, options?.params && options.params),
 				{
 					...options,
 					headers: {
@@ -61,8 +43,7 @@ export const useFetch = <A = {}>(
 			);
 			const { ok, data }: TResponse<A> = await res.json();
 			if(!ok) throw data;
-			if(isAtomDelegated) return atom(data);
-			setAtom(data);
+			onFinishFetch(data);
 		} catch (error: any) {
 			if(error.message) setError(error as TError['data']);
 		} finally {
