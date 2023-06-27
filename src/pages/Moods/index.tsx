@@ -63,7 +63,7 @@ export const Moods = () => {
 					{
 						moods.map(({ _id, name, icon  }) => (
 							<div key={_id} className={styles.moodsCard} onClick={onMoodSelection(_id)}>
-									{(selectedMoods[_id]) && <img className={styles.moodCheckIcon} src='/check.svg' alt={name} /> }
+									{(selectedMoods[_id]) && <img className={styles.moodCheckIcon} src='/check.svg' alt={'Se seleccionó la emoción ' + name} /> }
 									<img className={styles.moodIcon} src={icon} alt={name} />
 									<Text type='h4' className={globalStyles.textCenter}>{name}</Text>
 							</div>
