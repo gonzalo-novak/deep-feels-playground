@@ -1,8 +1,10 @@
-import { render } from "@testing-library/react";
+import { render, waitForElementToBeRemoved, screen } from "@testing-library/react";
 import { createMemoryRouter, RouterProvider } from "react-router-dom";
 import { routes } from "../routes";
 import { ROUTES } from "./routes";
 import { createStore, Provider } from "jotai";
+
+export const waitForLoadingToFinish = (str: string) => waitForElementToBeRemoved(() => screen.queryByText(str));
 
 export const testWrapper = (store?: any) => {
 	const router = createMemoryRouter(
