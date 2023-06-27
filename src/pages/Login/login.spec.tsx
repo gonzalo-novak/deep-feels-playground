@@ -61,6 +61,6 @@ describe('Page: Login', () => {
 		expect(registerButton).not.toBeDisabled();
 
 		await userEvent.click(await screen.findByRole('button', { name: text.main_cta }));
-		expect(await screen.findByRole('heading', { name: 'Hello A logged user' }));
+		expect(await screen.findByRole('heading', { name: 'Hello Sofia Stergo' }));
 	});
 })

@@ -1,0 +1,15 @@
+{
+  "ok": true,
+  "data": {
+      "user": {
+          "_id": "64973ea351ea28c85923d041",
+          "name": "Sofia Stergo",
+          "moods": [
+              "615bd714052e73f98574ad74",
+              "615bd714052e73f98574ad76"
+          ],
+          "__v": 0,
+          "hasSelectedTheirMoods": true
+      }
+  }
+}
