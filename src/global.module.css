@@ -14,7 +14,21 @@
 	align-items: center;
 	justify-content: center;
 }
-
+.container-horizontal-stack {
+	display: flex;
+}
+.container-align-vertical {
+	align-items: center;
+}
+.container-align-top {
+	align-items: flex-start;
+}
+.container-align-horizontal {
+	justify-content: center;
+}
+.container-align-between {
+	justify-content: space-between;
+}
 .container {
 	align-items: center;
 	display: flex;
