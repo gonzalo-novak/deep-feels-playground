@@ -4,7 +4,6 @@ export type TSound = {
 	_id: string;
 	name: string;
 	duration: number;
-	location: string;
 	image: string;
 	avgColor: string;
 };
