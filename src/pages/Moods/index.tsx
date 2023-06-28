@@ -9,12 +9,11 @@ import { useAtom, useAtomValue } from 'jotai';
 import { useFetch } from '../../hooks/useFetch';
 import globalStyles from '../../global.module.css';
 import { TUser, userAtom } from '../../states/user';
-import { isFetchError, isLoading } from '../../hooks/useFetch/atoms';
+import { isFetchError } from '../../hooks/useFetch/atoms';
 
 export const Moods = () => {
 	// State
 	const [user, setUser] = useAtom(userAtom)
-	const isFetching = useAtomValue(isLoading);
 	const [moods, setMoods] = useAtom(moodsAtom);
 	const fetchError = useAtomValue(isFetchError);
 	const [shouldRegisterMoods, setShouldRegisterMoods] = useState<boolean>(false);
@@ -78,8 +77,8 @@ export const Moods = () => {
 				>
 					{
 						(selectedMoodsArr.length)
-							? (!isFetching) ? text.main_cta.if_mood_selected : text.main_cta.if_mood_selected_loading
-							: (!isFetching) ? text.main_cta.if_no_mood_selected : text.main_cta.if_no_mood_selected_loading
+							? text.main_cta.if_mood_selected
+							: text.main_cta.if_no_mood_selected
 					}
 				</Button>
 			</div>

@@ -10,7 +10,7 @@ import { TUser, userAtom } from '../../states/user';
 import { validationStack } from '../../utils/formValidators';
 import { sessionAtomWithPersistence } from '../../states/session';
 import { FormEvent, useCallback, useEffect, useState } from 'react';
-import { isFetchError, isLoading } from '../../hooks/useFetch/atoms';
+import { isFetchError } from '../../hooks/useFetch/atoms';
 import { Link } from 'react-router-dom';
 import { ROUTES } from '../../utils/routes';
 
@@ -22,7 +22,6 @@ export const Register = () => {
 	// Atoms
 	const setUser = useSetAtom(userAtom);
 	const setSession = useSetAtom(sessionAtomWithPersistence);
-	const isFetching = useAtomValue(isLoading);
 	const fetchError = useAtomValue(isFetchError);
 
 	// API Calls
@@ -94,12 +93,9 @@ export const Register = () => {
 				<Button
 					type='submit'
 					style={{ display: 'inherit', margin: 'auto', marginTop: '2rem' }}
-					disabled={
-						Object.values(registerPayload).some(v => !v)
-						|| isFetching
-					}
+					disabled={Object.values(registerPayload).some(v => !v)}
 				>
-					{ (isFetching) ? 'Registrando...' : text.main_cta }
+					{text.main_cta}
 				</Button>
 				<span style={{ margin: '2rem auto', display: 'block', textAlign: 'center', fontSize: '.8rem' }}>
 					¿Estás registrado? <Link to={ROUTES.LOGIN}>Inicia sesión</Link>

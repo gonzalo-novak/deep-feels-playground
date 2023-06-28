@@ -1,4 +1,4 @@
-import { queryByText, screen, waitFor, waitForElementToBeRemoved } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import { testWrapper, waitForLoadingToFinish } from "../../utils/test-wrapper";
 import { createStore } from "jotai";
 import { sessionAtomWithPersistence } from "../../states/session";
@@ -19,7 +19,7 @@ describe('Page: Moods', () => {
 		store.set(userAtom, userRegisteredMock.data.user);
 		testWrapper(store);
 
-		await waitForLoadingToFinish('Cargando...');
+		await waitForLoadingToFinish();
 
 		// Selecting emotions
 		await user.click(await screen.findByText('Ansiedad'));
@@ -49,7 +49,7 @@ describe('Page: Moods', () => {
 		store.set(userAtom, userRegisteredMock.data.user);
 		testWrapper(store);
 
-		await waitForLoadingToFinish('Cargando...');
+		await waitForLoadingToFinish();
 
 		await user.click(await screen.findByRole('button', { name: 'No me siento identificado. Deseo continuar.' }));
 		expect(await screen.findByText(errorMessage));
