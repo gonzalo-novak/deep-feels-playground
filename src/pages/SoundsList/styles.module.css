@@ -1,0 +1,26 @@
+.user-icon {
+	width: 2rem;
+	opacity: .7;
+}
+.sound-list {
+	margin-top: 2rem;
+}
+.sound-card {
+	padding: 1.5rem;
+	border-radius: 6px;
+	max-width: 20rem;
+	margin: auto;
+	margin-bottom: 1rem;
+	color: white;
+}
+.sound-image {
+	width: 4rem;
+	height: 4rem;
+	background-size: cover;
+	overflow: hidden;
+	border-radius: 100px;
+}
+.play-icon {
+	cursor: pointer;
+	width: 2.5rem;
+}
