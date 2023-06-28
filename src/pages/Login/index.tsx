@@ -11,11 +11,10 @@ import { TUser, userAtom } from '../../states/user';
 import { validationStack } from '../../utils/formValidators';
 import { sessionAtomWithPersistence } from '../../states/session';
 import { FormEvent, useCallback, useEffect, useState } from 'react';
-import { isFetchError, isLoading } from '../../hooks/useFetch/atoms';
+import { isFetchError } from '../../hooks/useFetch/atoms';
 
 export const Login = () => {
 	// Initializers
-	const isFetching = useAtomValue(isLoading);
 	const fetchError = useAtomValue(isFetchError);
 
 	// State
@@ -78,9 +77,9 @@ export const Login = () => {
 				<Button
 					type='submit'
 					style={{ display: 'inherit', margin: 'auto' }}
-					disabled={Object.values(loginPayload).some(v => !v) || isFetching}
+					disabled={Object.values(loginPayload).some(v => !v)}
 				>
-					{(isFetching) ? text.main_cta_loading : text.main_cta}
+					{text.main_cta}
 				</Button>
 
 				<span style={{ margin: '2rem auto', display: 'block', textAlign: 'center', fontSize: '.8rem' }}>

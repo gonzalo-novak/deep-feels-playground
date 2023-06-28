@@ -4,7 +4,7 @@ import { routes } from "../routes";
 import { ROUTES } from "./routes";
 import { createStore, Provider } from "jotai";
 
-export const waitForLoadingToFinish = (str: string) => waitForElementToBeRemoved(() => screen.queryByText(str));
+export const waitForLoadingToFinish = () => waitForElementToBeRemoved(() => screen.queryByText('Cargando'));
 
 export const testWrapper = (store?: any) => {
 	const router = createMemoryRouter(
