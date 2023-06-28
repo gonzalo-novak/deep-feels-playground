@@ -4,15 +4,17 @@ import { Outlet, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import { useEffect } from 'react';
 import { useAtom, useAtomValue } from 'jotai';
-import { isFetchError } from '../../hooks/useFetch/atoms';
+import { isFetchError, isLoading } from '../../hooks/useFetch/atoms';
 import { sessionAtomWithPersistence } from '../../states/session';
 import { userAtom } from '../../states/user';
 import { ROUTES } from '../../utils/routes';
+import { Spinner } from '../Spinner';
 
 export const Layout = () => {
 	const navigate = useNavigate();
 	const { hasSelectedTheirMoods } = useAtomValue(userAtom);
 	const [fetchError, setFetchError] = useAtom(isFetchError);
+	const isFetching = useAtomValue(isLoading)
 	const session = useAtomValue(sessionAtomWithPersistence);
 
 	useEffect(() => {
@@ -43,9 +45,12 @@ export const Layout = () => {
 	}, [session, hasSelectedTheirMoods]);
 
  return (
+	<>
+	{(isFetching) && <Spinner />}
  	<div className={styles.container}>
 		<Outlet></Outlet>
 		<ToastContainer />
 	</div>
+	</>
  )
 };
