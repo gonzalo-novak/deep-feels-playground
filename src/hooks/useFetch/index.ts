@@ -17,7 +17,6 @@ export type TError = {
 
 type FetchOptions = Omit<RequestInit, 'body' | 'params'> & { body: any, useCredentials?: boolean; params?: { [k: string] : string | boolean | number } } ;
 
-export const apiContext = '/api';
 export const useFetch = <A = {}>(
 	endpoint: keyof typeof ENDPOINTS | null,
 	onFinishFetch: ((response: A) => void),

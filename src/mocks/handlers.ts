@@ -1,19 +1,19 @@
 import { rest } from 'msw'
 import { ENDPOINTS } from '../utils/endpoints'
-import { apiContext } from '../hooks/useFetch';
 
 // Mocks
 import moodsJSON from './moods.mock.json';
 import registerJSON from './register.mock.json';
 import loginJSON from './login.mock.json';
 import registeredMoodsJSON from './registered-moods.json';
+import { FETCH_API_CONTEXT } from '../utils/constants';
 
 export const generateURL = (endpoint: keyof typeof ENDPOINTS, params?: { [k: string]: any }) => (
 	// We'll omit this line as we don't need to test it because it's
 	// only used in testing environments
 	/* c8 ignore next */
 	(process.env?.TEST_API_HOST || '')
-	+ apiContext
+	+ FETCH_API_CONTEXT
 	+ (
 		(params)
 		? (
