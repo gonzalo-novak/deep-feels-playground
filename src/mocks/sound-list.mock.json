@@ -1,0 +1,39 @@
+{
+  "ok": true,
+  "data": {
+      "sounds": [
+          {
+              "_id": "61ef4a604cba73e4b9a3ca2d",
+              "name": "Rainy Day",
+              "duration": 600000,
+              "location": "../static/rainy-day.mp3",
+              "image": "https://res.cloudinary.com/mrrobnav/image/upload/q_auto/v1643072192/rainy-day_t027qj.jpg",
+              "avgColor": "#231c1c"
+          },
+          {
+              "_id": "61c7773cb6382d060cb7785d",
+              "name": "Forest",
+              "duration": 300000,
+              "location": "../static/forest-sound.mp3",
+              "image": "https://res.cloudinary.com/mrrobnav/image/upload/q_auto:eco/v1640554358/deepfeels/forest-sounds_nn8o3h.jpg",
+              "avgColor": "#29311d"
+          },
+          {
+              "_id": "61c775ddb6382d060cb7785c",
+              "name": "Night Aura",
+              "duration": 600000,
+              "location": "../static/night-aura.mp3",
+              "image": "https://res.cloudinary.com/mrrobnav/image/upload/q_auto:eco/v1640554258/deepfeels/night-aura_mftr16.jpg",
+              "avgColor": "#0c3f40"
+          },
+          {
+              "_id": "61eed7796607c36b083c9d12",
+              "name": "Jazz Coffee",
+              "duration": 600000,
+              "location": "../static/jazz-coffee.mp3",
+              "image": "https://res.cloudinary.com/mrrobnav/image/upload/q_auto/v1643071845/pexels-burst-374757_ntxtr6.jpg",
+              "avgColor": "#2d3b30"
+          }
+      ]
+  }
+}

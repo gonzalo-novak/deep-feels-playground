@@ -3,9 +3,11 @@ import { ENDPOINTS } from '../utils/endpoints'
 
 // Mocks
 import moodsJSON from './moods.mock.json';
-import registerJSON from './register.mock.json';
 import loginJSON from './login.mock.json';
+import registerJSON from './register.mock.json';
+import soundListJSON from './sound-list.mock.json';
 import registeredMoodsJSON from './registered-moods.json';
+
 import { FETCH_API_CONTEXT } from '../utils/constants';
 
 export const generateURL = (endpoint: keyof typeof ENDPOINTS, params?: { [k: string]: any }) => (
@@ -30,5 +32,6 @@ export const handlers = [
   rest.get(generateURL('moods'), (_, res, ctx) => res(ctx.json(moodsJSON))),
 	rest.post(generateURL('register'), (_, res, ctx) => res(ctx.json(registerJSON))),
 	rest.post(generateURL('login'), (_, res, ctx) => res(ctx.json(loginJSON))),
-	rest.put(generateURL('registerMoods', { id: registerJSON.data.user._id }), (_, res, ctx) => res(ctx.json(registeredMoodsJSON)))
+	rest.put(generateURL('registerMoods', { id: registerJSON.data.user._id }), (_, res, ctx) => res(ctx.json(registeredMoodsJSON))),
+	rest.get(generateURL('soundList'), (_, res, ctx) => res(ctx.json(soundListJSON))),
 ];
