@@ -1,6 +1,9 @@
 .user-icon {
-	width: 2rem;
-	opacity: .7;
+	min-width: 3rem;
+	min-height: 3rem;
+	background-size: cover;
+	border-radius: 100px;
+	cursor: pointer;
 }
 .sound-list {
 	margin-top: 2rem;
@@ -23,4 +26,9 @@
 .play-icon {
 	cursor: pointer;
 	width: 2.5rem;
+}
+.actions-container {
+	display: grid;
+	gap: 1rem;
+	grid-template-areas: "icon icon";
 }

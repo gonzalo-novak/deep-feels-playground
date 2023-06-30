@@ -17,11 +17,13 @@ describe('Page: Sound List', () => {
 		await waitForLoadingToFinish();
 
 		const soundCardItemEl = await screen.findByAltText('Start playing Jazz Coffee');
-		const profileButtonEl = await screen.findByAltText(`${loggedUserMock.data.user.name}'s icon`);
 		await user.click(soundCardItemEl);
-		await user.click(profileButtonEl);
 
 		expect(await screen.findByRole('heading', { name: 'Hola ' + loggedUserMock.data.user.name })).toBeInTheDocument();
 		expect(await screen.findByText(text.subtitle)).toBeInTheDocument();
+
+		const profileButtonEl = await screen.findByLabelText(`Change ${loggedUserMock.data.user.name}'s profile data`);
+		await user.click(profileButtonEl);
+		expect(await screen.findByRole('heading', { name: 'Tu perfil'})).toBeInTheDocument();
 	});
 });
