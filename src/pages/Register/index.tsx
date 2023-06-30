@@ -52,7 +52,6 @@ export const Register = () => {
 		]),
 	[]);
 
-	const onInputChange = (value: TInputChangeEventValues) => setRegisterPayload({...registerPayload, ...value});
 	const handleRegisterSubmit = (e: FormEvent) => {
 		e.preventDefault();
 		setShouldStartRegistering(true);
@@ -71,15 +70,17 @@ export const Register = () => {
 					name='name'
 					label={text.form.name.label}
 					placeholder={text.form.name.placeholder}
-					onChange={onInputChange}
+					setValues={setRegisterPayload}
 					onValidationFn={validateNameField}
+					value={registerPayload.name}
 				/>
 				<Input
 					name='email'
 					label={text.form.email.label}
 					placeholder={text.form.email.placeholder}
-					onChange={onInputChange}
+					setValues={setRegisterPayload}
 					onValidationFn={validateEmailField}
+					value={registerPayload.email}
 				/>
 				<Input
 					autoComplete='new-password'
@@ -87,8 +88,9 @@ export const Register = () => {
 					name='password'
 					label={text.form.password.label}
 					placeholder={text.form.password.placeholder}
-					onChange={onInputChange}
+					setValues={setRegisterPayload}
 					onValidationFn={validatePasswordField}
+					value={registerPayload.password}
 				/>
 				<Button
 					type='submit'
