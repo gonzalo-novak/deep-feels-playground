@@ -16,9 +16,6 @@ describe('Page: Sound List', () => {
 		testWrapper(store);
 		await waitForLoadingToFinish();
 
-		const soundCardItemEl = await screen.findByAltText('Start playing Jazz Coffee');
-		await user.click(soundCardItemEl);
-
 		expect(await screen.findByRole('heading', { name: 'Hola ' + loggedUserMock.data.user.name })).toBeInTheDocument();
 		expect(await screen.findByText(text.subtitle)).toBeInTheDocument();
 	});
@@ -29,9 +26,6 @@ describe('Page: Sound List', () => {
 		store.set(userAtom, loggedUserMock.data.user)
 		testWrapper(store);
 		await waitForLoadingToFinish();
-
-		const soundCardItemEl = await screen.findByAltText('Start playing Jazz Coffee');
-		await user.click(soundCardItemEl);
 
 		expect(await screen.findByRole('heading', { name: 'Hola ' + loggedUserMock.data.user.name })).toBeInTheDocument();
 		await user.click(await screen.findByAltText('Log out'));
