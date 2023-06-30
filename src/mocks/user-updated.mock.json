@@ -1,0 +1,21 @@
+{
+  "ok": true,
+  "data": {
+    "user": {
+      "_id": "ABCDE",
+      "photo": "https://thispagedoesnotexists.dat/myimage.png",
+      "name": "Sofia Stergo!",
+      "email": "user@main.com",
+      "moods": [
+        {
+          "_id": "649497ebb917661f09b538f1",
+          "name": "Insomnio",
+          "icon": "https://res.cloudinary.com/mrrobnav/image/upload/v1633456610/deepfeels/insomnio_laoziq.svg",
+          "__v": 0
+        }
+      ],
+      "hasSelectedTheirMoods": true
+    },
+    "token": "ABCDE"
+  }
+}

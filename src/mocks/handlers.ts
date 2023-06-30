@@ -7,6 +7,7 @@ import loginJSON from './login.mock.json';
 import registerJSON from './register.mock.json';
 import soundListJSON from './sound-list.mock.json';
 import registeredMoodsJSON from './registered-moods.json';
+import updatedUserJSON from './user-updated.mock.json';
 
 import { FETCH_API_CONTEXT } from '../utils/constants';
 
@@ -34,4 +35,5 @@ export const handlers = [
 	rest.post(generateURL('login'), (_, res, ctx) => res(ctx.json(loginJSON))),
 	rest.put(generateURL('registerMoods', { id: registerJSON.data.user._id }), (_, res, ctx) => res(ctx.json(registeredMoodsJSON))),
 	rest.get(generateURL('soundList'), (_, res, ctx) => res(ctx.json(soundListJSON))),
+	rest.put(generateURL('updateProfile', { id: registerJSON.data.user._id }), (_, res, ctx) => res(ctx.json(updatedUserJSON))),
 ];
