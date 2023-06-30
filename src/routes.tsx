@@ -5,6 +5,7 @@ import { Layout } from './components/Layout';
 import { Moods } from './pages/Moods';
 import { SoundsList } from './pages/SoundsList';
 import { PasswordRecovery } from './pages/PasswordRecovery';
+import { UserProfile } from './pages/UserProfile';
 
 export const routes: RouteObject[] = [
 	{
@@ -35,6 +36,10 @@ export const routes: RouteObject[] = [
 				path: ROUTES.MOODS,
 				element: <Moods />
 			},
+			{
+				path: ROUTES.USER_PROFILE,
+				element: <UserProfile />
+			}
 		]
 	}
 ];
