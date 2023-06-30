@@ -19,7 +19,7 @@ export const SoundsList = () => {
 
 	useFetch<{ sounds: TSound[] }>('soundList', ({ sounds }) => setSounds(sounds), { useCredentials: true });
 
-	const handleSelectedSound = useCallback((sound: string) => () => {
+	const handleSelectedSound = useCallback((sound: TSound) => () => {
 		setSoundId(sound);
 		navigate(ROUTES.PLAYER);
 	}, [])
@@ -86,7 +86,7 @@ export const SoundsList = () => {
 									role="button"
 									src='/play-btn.svg'
 									className={styles.playIcon} alt={`Start playing ${name}`}
-									onClick={handleSelectedSound(_id)}
+									onClick={handleSelectedSound({ _id, name, duration, avgColor, image })}
 								/>
 							</li>
 						))

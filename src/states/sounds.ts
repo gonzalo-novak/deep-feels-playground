@@ -9,4 +9,4 @@ export type TSound = {
 };
 
 export const soundsAtom = atom<TSound[]>([]);
-export const selectedSound = atom<string>("")
+export const selectedSound = atom<TSound | null>(null)

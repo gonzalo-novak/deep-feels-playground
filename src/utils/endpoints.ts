@@ -4,5 +4,7 @@ export const ENDPOINTS = {
 	login: '/user/login',
 	registerMoods: '/user/id/mood',
 	soundList: '/sounds',
-	updateProfile: '/user/id/edit'
+	updateProfile: '/user/id/edit',
+	inspirationalQuotes: '/quote',
+	playSound: '/sounds/stream/id'
 };

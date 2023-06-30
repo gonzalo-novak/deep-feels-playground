@@ -1,8 +1,8 @@
-import { useCallback } from "react";
+import { ImgHTMLAttributes, useCallback } from "react";
 import styles from './styles.module.css';
 import { useNavigate } from "react-router-dom";
 
-export const BackButton = () => {
+export const BackButton = ({...rest}: ImgHTMLAttributes<HTMLImageElement>) => {
 	const navigate = useNavigate();
 
 	const handleItemClick = useCallback(() => {
@@ -16,6 +16,7 @@ export const BackButton = () => {
 			onClick={handleItemClick}
 			role="button"
 			alt="Regresar a la sección anterior"
+			{...rest}
 		/>
 	);
 }
