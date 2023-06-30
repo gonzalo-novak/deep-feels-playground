@@ -35,7 +35,6 @@ export const useFetch = <A = {}>(
 					...options,
 					headers: {
 						...(options && !options.notUseJSONPayload && { 'Content-Type': 'application/json' }),
-						...(options && options.headers && { ...options.headers }),
 						...(options && options.useCredentials && { Authorization: session })
 					},
 					...(options && options.body && { body: (options.body instanceof FormData) ? options.body : JSON.stringify(options.body) })

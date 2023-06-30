@@ -3,7 +3,7 @@ import { testWrapper, waitForLoadingToFinish } from "../../utils/test-wrapper";
 import { sessionAtomWithPersistence } from "../../states/session";
 import { userAtom } from "../../states/user";
 import loggedUserMock from '../../mocks/login.mock.json';
-import { screen } from "@testing-library/react";
+import { screen, waitFor } from "@testing-library/react";
 import userEvent from '@testing-library/user-event';
 import { act } from "react-dom/test-utils";
 
@@ -42,8 +42,12 @@ describe('Page: User Profile Edit', () => {
 
 		expect(await screen.findByText('Guardar cambios')).toBeInTheDocument();
 		await user.click(await screen.findByText('Guardar cambios'));
-		act(() => {
+
+		await waitFor(() => {
 			expect(screen.queryByText('Guardar cambios')).not.toBeInTheDocument();
-		})
+		});
+
+		await user.click(await screen.findByAltText('Regresar a la sección anterior'));
+		expect(await screen.findByRole('heading', { name: 'Hola Sofia Stergo!' }));
 	});
 });
