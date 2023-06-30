@@ -15,7 +15,7 @@ export type TError = {
 	data: { message: string; };
 };
 
-type FetchOptions = Omit<RequestInit, 'body' | 'params'> & { body?: any, useCredentials?: boolean; params?: { [k: string] : string | boolean | number } } ;
+type FetchOptions = Omit<RequestInit, 'body' | 'params'> & { body?: any, useCredentials?: boolean; params?: { [k: string] : string | boolean | number }, notUseJSONPayload?: boolean; } ;
 
 export const useFetch = <A = {}>(
 	endpoint: keyof typeof ENDPOINTS | null,
@@ -34,10 +34,11 @@ export const useFetch = <A = {}>(
 				{
 					...options,
 					headers: {
-						'Content-Type': 'application/json',
+						...(options && !options.notUseJSONPayload && { 'Content-Type': 'application/json' }),
+						...(options && options.headers && { ...options.headers }),
 						...(options && options.useCredentials && { Authorization: session })
 					},
-					...(options && options.body && { body: JSON.stringify(options.body) })
+					...(options && options.body && { body: (options.body instanceof FormData) ? options.body : JSON.stringify(options.body) })
 				}
 			);
 			const { ok, data }: TResponse<A> = await res.json();
