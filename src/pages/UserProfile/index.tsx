@@ -19,7 +19,7 @@ export const UserProfile = () => {
 	const userPhotoRef = useRef<HTMLInputElement | null>(null);
 	const [user, setUser] = useAtom(userAtom);
 	const { _id, name, email, photo } = user;
-	const initialState = { name, email, photo: photo || undefined };
+	const initialState = { name, email, photo: photo || '' };
 
 	// States
 	const [newUserPhotoPreview, setNewUserPhotoPreview] = useState('');
