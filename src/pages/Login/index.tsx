@@ -34,7 +34,6 @@ export const Login = () => {
 	);
 
 	// Methods
-	const handleInputChanges = (value: Partial<TLoginPayload>) => setLoginPayload((p) => ({...p, ...value}));
 	const validatePassword = useCallback((value: string) => validationStack([[value, 'nonEmptyValue']]), []);
 	const validateEmail = useCallback((value: string) => validationStack([
 		[value, 'nonEmptyValue'],
@@ -60,8 +59,9 @@ export const Login = () => {
 					name='email'
 					label={text.form.email.label}
 					placeholder={text.form.email.placeholder}
-					onChange={handleInputChanges}
+					setValues={setLoginPayload}
 					onValidationFn={validateEmail}
+					value={loginPayload.email}
 				/>
 				<Input
 					name='password'
@@ -69,8 +69,9 @@ export const Login = () => {
 					autoComplete='current-password'
 					label={text.form.password.label}
 					placeholder={text.form.password.placeholder}
-					onChange={handleInputChanges}
+					setValues={setLoginPayload}
 					onValidationFn={validatePassword}
+					value={loginPayload.password}
 				/>
 				<Link style={{ marginBottom: '3rem', display: 'inline-block', textAlign: 'right', 'color': 'var(--color-black)' }} to={ROUTES.PASSWORD_RECOVERY}>¿Olvidaste tu contraseña?</Link>
 
