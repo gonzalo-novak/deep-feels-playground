@@ -8,9 +8,12 @@ import { useAtom, useAtomValue } from "jotai";
 import { useFetch } from "../../hooks/useFetch";
 import globalStyles from '../../global.module.css';
 import { TSound, soundsAtom } from "../../states/sounds";
+import { useNavigate } from "react-router-dom";
+import { ROUTES } from "../../utils/routes";
 
 export const SoundsList = () => {
-	const { name , photo, _id} = useAtomValue(userAtom);
+	const navigate = useNavigate();
+	const { name , photo } = useAtomValue(userAtom);
 	const [sounds, setSounds] = useAtom(soundsAtom);
 
 	useFetch<{ sounds: TSound[] }>('soundList', ({ sounds }) => setSounds(sounds), { useCredentials: true });
@@ -20,7 +23,12 @@ export const SoundsList = () => {
 	}, [])
 
 	const handleProfileSelection = useCallback(() => {
-		console.log(_id);
+		navigate(ROUTES.USER_PROFILE);
+	}, [])
+
+	const handleLogout = useCallback(() => {
+		localStorage.clear();
+		navigate(ROUTES.LOGIN);
 	}, [])
 
 	return (
@@ -37,12 +45,18 @@ export const SoundsList = () => {
 					<Text type="h2">{text.title.replace('${name}', name)}</Text>
 					<Text>{text.subtitle}</Text>
 				</div>
-				<img
-					role="button"
-					src={photo || '/user-icon.svg'}
-					className={styles.userIcon} alt={`${name}'s icon`}
-					onClick={handleProfileSelection}
-				/>
+				<div className={styles.actionsContainer}>
+					<div
+						role="button"
+						aria-label={`Change ${name}'s profile data`}
+						onClick={handleProfileSelection}
+						className={styles.userIcon}
+						style={{ backgroundImage: `url(${photo || '/user-icon.svg'})` }}
+					/>
+					<button type="button" style={{ border: 'none', background: 'none', cursor: 'pointer' }} onClick={handleLogout}>
+						<img src="/exit.svg" alt="Log out" />
+					</button>
+				</div>
 			</div>
 			{
 				(!!sounds.length) &&
