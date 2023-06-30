@@ -7,5 +7,6 @@ export const ROUTES = {
 	// Logged-in Routes
 	PROFILE: '/profile',
 	MOODS: '/profile/moods',
-	USER_PROFILE: '/profile/user'
+	USER_PROFILE: '/profile/user',
+	PLAYER: '/profile/player'
 }

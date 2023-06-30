@@ -4,10 +4,10 @@ import classNames from "classnames";
 import styles from './styles.module.css';
 import { userAtom } from "../../states/user";
 import { Text } from "../../components/Text";
-import { useAtom, useAtomValue } from "jotai";
+import { useAtom, useAtomValue, useSetAtom } from "jotai";
 import { useFetch } from "../../hooks/useFetch";
 import globalStyles from '../../global.module.css';
-import { TSound, soundsAtom } from "../../states/sounds";
+import { TSound, selectedSound, soundsAtom } from "../../states/sounds";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../../utils/routes";
 
@@ -15,11 +15,13 @@ export const SoundsList = () => {
 	const navigate = useNavigate();
 	const { name , photo } = useAtomValue(userAtom);
 	const [sounds, setSounds] = useAtom(soundsAtom);
+	const setSoundId = useSetAtom(selectedSound);
 
 	useFetch<{ sounds: TSound[] }>('soundList', ({ sounds }) => setSounds(sounds), { useCredentials: true });
 
 	const handleSelectedSound = useCallback((sound: string) => () => {
-		console.log(sound);
+		setSoundId(sound);
+		navigate(ROUTES.PLAYER);
 	}, [])
 
 	const handleProfileSelection = useCallback(() => {

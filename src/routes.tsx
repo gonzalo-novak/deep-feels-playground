@@ -6,6 +6,7 @@ import { Moods } from './pages/Moods';
 import { SoundsList } from './pages/SoundsList';
 import { PasswordRecovery } from './pages/PasswordRecovery';
 import { UserProfile } from './pages/UserProfile';
+import { Player } from './pages/Player';
 
 export const routes: RouteObject[] = [
 	{
@@ -39,6 +40,10 @@ export const routes: RouteObject[] = [
 			{
 				path: ROUTES.USER_PROFILE,
 				element: <UserProfile />
+			},
+			{
+				path: ROUTES.PLAYER,
+				element: <Player />
 			}
 		]
 	}
